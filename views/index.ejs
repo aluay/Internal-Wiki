@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/reset.css">
+    <link rel="stylesheet" href="/css/styles.css">
+    <link rel="shortcut icon" href="/assets/favicon.ico">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Sora:wght@200;300;400&display=swap" rel="stylesheet">
+    <title>Internal Wiki</title>
+</head>
+
+<body>
+    <header>
+        <div class="page-header">
+            <div class="logo">
+                <img src="/assets/site-logo.png" alt="logo">
+                <p>Internal Wiki</p>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <div class="header-container">
+            <div class="content-header">
+                <a href="/">Home</a>
+                <a href="/create">Create</a>
+                <a href="/about">About</a>
+            </div>
+            <div class="content-header-border"></div>
+        </div>
+        <div class="articles-container">
+            <h1 class="article-container-header">Latest Articles</h1>
+            <% for (let i = articles.length-1; i >= 0;  i--) { %>
+            <article class="article" id="<%= articles[i].rowid %>">
+                <div class="article-header">
+                    <h1><%- articles[i].title %></h1>
+                    <button class="more" id="<%= articles[i].rowid %>">Expand</button>
+                </div>
+                <small>Posted on: <%- articles[i].postTime %></small>
+                <p><%- articles[i].body %></p>
+                <div class="article-details">
+                    <h4>Article Details:</h4>
+                    <small>Author: <%- articles[i].author %></small>
+                    <small>Author Email: <%- articles[i].email %></small>
+                    <small>Team Name: <%- articles[i].team %></small>
+                    <small>Category: <%- articles[i].category %></small>
+                    <small>Hashtags: <%- articles[i].hashtags %></small>
+                    <small>Tagged Users: <%- articles[i].others %></small>
+                </div>
+            </article>
+
+            <% } %>
+        </div>
+    </main>
+    <footer></footer>
+    <script src="https://code.jquery.com/jquery-3.6.0.js"
+        integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
+    <script src="/javascript/serviceWorker.js"></script>
+</body>
+
+</html>
